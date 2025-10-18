@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 using namespace std;
 
-void draw(char [3][3]); //Прототип функции хода
+void Inputcorrectness(char [3][3]); //Прототип функции хода
 
 int main(){
     setlocale(LC_ALL, "RU");
@@ -12,12 +12,12 @@ int main(){
     {'_', '_', '_'}
     };
     
-    draw(arr); //Вызов функции ходов
+    Inputcorrectness(arr); //Вызов функции ходов
 
     return 0;
 }
 
-void draw(char x[3][3]) { //Функция хода
+void Inputcorrectness(char x[3][3]) { //Функция хода
 
     int strin, column; 
     char sim;
@@ -52,10 +52,11 @@ void draw(char x[3][3]) { //Функция хода
         if ((x[strin - 1][column - 1] != 'O') and (x[strin - 1][column - 1] != 'X')) 
             x[strin - 1][column - 1] = sim;
         else {
-            cout << "ЭТА КЛЕТКА УЖЕ ЗАНЯТА!" << endl;
+            cout << "ЭТА КЛЕТКА УЖЕ ЗАНЯТА!" << endl ;
             i--;
             continue;
         }
+         
 
         //Вывод поля с совершенным ходом
         cout << "   1" << "   2" << "   3" << endl
