@@ -3,6 +3,8 @@ using namespace std;
 
 void Inputcorrectness(char [3][3]); //Прототип функции хода
 
+int Win(char[3][3], char); //Прототип функции победы
+
 int main(){
     setlocale(LC_ALL, "RU");
 
@@ -57,7 +59,6 @@ void Inputcorrectness(char x[3][3]) { //Функция хода
             continue;
         }
          
-
         //Вывод поля с совершенным ходом
         cout << "   1" << "   2" << "   3" << endl
         << "1  " << x[0][0] << " | " << x[0][1] << " | " << x[0][2] << endl
@@ -66,5 +67,22 @@ void Inputcorrectness(char x[3][3]) { //Функция хода
         << "   -" << "-+-" << "-" << "-+-" << "-" << endl
         << "3  " << x[2][0] << " | " << x[2][1] << " | " << x[2][2] << endl;
 
+        if (Win(x, sim) == 1)
+            return;
     }
+}
+
+int Win(char z[3][3], char sim) { //Функция победы
+    for (int i = 0; i < 3; i++) {
+        if (
+            (z[i][0] == z[i][1] and z[i][0]== z[i][2] and z[i][0] == sim) or 
+            (z[0][i] == z[1][i] and z[0][i] == z[2][i] and z[0][i] == sim) or 
+            (z[0][0] == z[1][1] and z[0][0] == z[2][2] and z[0][0] == sim) or
+            (z[0][2] == z[1][1] and z[0][2] == z[2][0] and z[0][2] == sim)
+            ) {
+            cout << "Победа '" << sim << "'!";
+            return 1;
+        }
+    }
+    return 0;
 }
